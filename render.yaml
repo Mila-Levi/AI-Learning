@@ -1,0 +1,16 @@
+# Free temporary multiplayer testing; no paid disks or databases.
+services:
+  - type: web
+    name: lake-chase
+    runtime: docker
+    plan: free
+    numInstances: 1
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: DATA_DIR
+        value: /tmp/lake-chase
+      - key: EPHEMERAL_STORAGE
+        value: "true"
